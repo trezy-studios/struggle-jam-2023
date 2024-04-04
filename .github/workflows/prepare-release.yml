@@ -1,4 +1,4 @@
-name: Get Next Version
+name: Prepare Release
 
 on:
   workflow_call:
@@ -12,16 +12,16 @@ on:
     outputs:
       published:
         description: Whether a new version should be published.
-        value: ${{ jobs.get-next-version.outputs.published }}
+        value: ${{ jobs.prepare-release.outputs.published }}
       version:
         description: The new version.
-        value: ${{ jobs.get-next-version.outputs.version }}
+        value: ${{ jobs.prepare-release.outputs.version }}
       notes:
         description: Release notes for the new version.
-        value: ${{ jobs.get-next-version.outputs.notes }}
+        value: ${{ jobs.prepare-release.outputs.notes }}
 
 jobs:
-  get-next-version:
+  prepare-release:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,16 +43,16 @@ jobs:
       - name: Install Packages
         run: yarn install
 
-      - name: Get Next Version
-        run: npx semantic-release --dry-run
-        id: get-next-version
+      - name: Prepare the release
+        run: npx semantic-release
+        id: prepare-release
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
 
       - name: Show Version
-        run: echo "Next version is ${{ steps.get-next-version.outputs.new-release-version }} (${{ inputs.ref }})"
+        run: echo "Next version is ${{ steps.prepare-release.outputs.new-release-version }} (${{ inputs.ref }})"
 
     outputs:
-      published: ${{ steps.get-next-version.outputs.new-release-published }}
-      version: ${{ steps.get-next-version.outputs.new-release-version }}
-      notes: ${{ steps.get-next-version.outputs.new-release-notes }}
+      published: ${{ steps.prepare-release.outputs.new-release-published }}
+      version: ${{ steps.prepare-release.outputs.new-release-version }}
+      notes: ${{ steps.prepare-release.outputs.new-release-notes }}
