@@ -32,15 +32,13 @@ export const ALIGNMENT = {
  *
  * @component
  */
-export function MenuButton(props) {
-	const {
-		align,
-		children,
-		className,
-		isDisabled,
-		onClick,
-	} = props
-
+export function MenuButton({
+	align = ALIGNMENT.LEFT,
+	children,
+	className = '',
+	isDisabled = false,
+	onClick,
+}) {
 	const compiledClassName = useMemo(() => classnames({
 		[styles['menu-button']]: true,
 		[styles['align-center']]: align === ALIGNMENT.CENTER,
@@ -60,12 +58,6 @@ export function MenuButton(props) {
 			{children}
 		</Button>
 	)
-}
-
-MenuButton.defaultProps = {
-	align: ALIGNMENT.LEFT,
-	className: '',
-	isDisabled: false,
 }
 
 MenuButton.propTypes = {

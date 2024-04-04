@@ -24,15 +24,13 @@ import { ExternalLink } from '../ExternalLink/ExternalLink.jsx'
  *
  * @component
  */
-export function Link(props) {
-	const {
-		children,
-		className,
-		href,
-		onMouseOut,
-		onMouseOver,
-	} = props
-
+export function Link({
+	children,
+	className = '',
+	href,
+	onMouseOut = null,
+	onMouseOver = null,
+}) {
 	const compiledClassName = useMemo(() => classnames(styles['link'], className), [className])
 
 	const handleMouseOut = useCallback(event => {
@@ -53,6 +51,8 @@ export function Link(props) {
 			<a
 				className={compiledClassName}
 				href={href}
+				onBlur={handleMouseOut}
+				onFocus={handleMouseOver}
 				onMouseOut={handleMouseOut}
 				onMouseOver={handleMouseOver}>
 				{children}
@@ -69,12 +69,6 @@ export function Link(props) {
 			{children}
 		</ExternalLink>
 	)
-}
-
-Link.defaultProps = {
-	className: '',
-	onMouseOut: null,
-	onMouseOver: null,
 }
 
 Link.propTypes = {

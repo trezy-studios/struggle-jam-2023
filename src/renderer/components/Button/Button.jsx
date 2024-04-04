@@ -1,3 +1,5 @@
+/* eslint-disable no-undefined */
+
 // Module imports
 import classnames from 'classnames'
 import { motion } from 'framer-motion'
@@ -20,23 +22,21 @@ import styles from './Button.module.scss'
  *
  * @component
  */
-export function Button(props) {
-	const {
-		animate,
-		children,
-		className,
-		exit,
-		initial,
-		isDisabled,
-		onClick,
-		onMouseDown,
-		onMouseOut,
-		onMouseOver,
-		onMouseUp,
-		transition,
-		variants,
-	} = props
-
+export function Button({
+	animate = undefined,
+	children,
+	className = '',
+	exit = undefined,
+	initial = undefined,
+	isDisabled = false,
+	onClick = undefined,
+	onMouseDown = undefined,
+	onMouseOut = undefined,
+	onMouseOver = undefined,
+	onMouseUp = undefined,
+	transition = undefined,
+	variants = undefined,
+}) {
 	const compiledClassName = useMemo(() => {
 		return classnames({
 			[styles['button']]: true,
@@ -65,26 +65,6 @@ export function Button(props) {
 			{children}
 		</motion.button>
 	)
-}
-
-Button.defaultProps = {
-	animate: null,
-	className: '',
-	exit: null,
-	initial: null,
-	isDisabled: false,
-	// eslint-disable-next-line jsdoc/require-jsdoc
-	onClick: () => {},
-	// eslint-disable-next-line jsdoc/require-jsdoc
-	onMouseDown: () => {},
-	// eslint-disable-next-line jsdoc/require-jsdoc
-	onMouseOut: () => {},
-	// eslint-disable-next-line jsdoc/require-jsdoc
-	onMouseOver: () => {},
-	// eslint-disable-next-line jsdoc/require-jsdoc
-	onMouseUp: () => {},
-	transition: {},
-	variants: {},
 }
 
 Button.propTypes = {

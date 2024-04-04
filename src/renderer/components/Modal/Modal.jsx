@@ -31,12 +31,10 @@ const VARIANTS = {
  *
  * @component
  */
-export function Modal(props) {
-	const {
-		children,
-		className,
-	} = props
-
+export function Modal({
+	children = null,
+	className = '',
+}) {
 	const compiledClassName = useMemo(() => classnames(styles['modal'], className), [className])
 
 	return (
@@ -61,11 +59,6 @@ export function Modal(props) {
 			</div>
 		</motion.div>
 	)
-}
-
-Modal.defaultProps = {
-	children: null,
-	className: '',
 }
 
 Modal.propTypes = {

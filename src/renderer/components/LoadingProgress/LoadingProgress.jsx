@@ -31,9 +31,9 @@ import { store } from '../../store/store.js'
  *
  * @component
  */
-export function LoadingProgress(props) {
-	const { className } = props
-
+export function LoadingProgress({
+	className = '',
+}) {
 	const {
 		assetLoadingProgress,
 		currentLoadingCategory,
@@ -88,10 +88,6 @@ export function LoadingProgress(props) {
 				value={progressMotionState} />
 		</div>
 	)
-}
-
-LoadingProgress.defaultProps = {
-	className: '',
 }
 
 LoadingProgress.propTypes = {

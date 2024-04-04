@@ -24,18 +24,14 @@ function handleMount(pixiApp) {
  *
  * @component
  */
-export function PixiStage(props) {
-	const { children } = props
-
+export function PixiStage({
+	children = null,
+}) {
 	return (
 		<Stage onMount={handleMount}>
 			{children}
 		</Stage>
 	)
-}
-
-PixiStage.defaultProps = {
-	children: null,
 }
 
 PixiStage.propTypes = {

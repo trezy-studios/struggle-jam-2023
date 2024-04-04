@@ -21,19 +21,17 @@ import { useMemo } from 'react'
  *
  * @component
  */
-export function MenuItem(props) {
-	const {
-		children,
-		className,
-		index,
-		isActive,
-		menuID,
-		onBlur,
-		onFocus,
-		onMouseOut,
-		onMouseOver,
-	} = props
-
+export function MenuItem({
+	children = null,
+	className = '',
+	index,
+	isActive,
+	menuID,
+	onBlur,
+	onFocus,
+	onMouseOut,
+	onMouseOver,
+}) {
 	const compiledClassName = useMemo(() => classnames({
 		[styles['menu-item']]: true,
 		[styles['is-active']]: isActive,
@@ -57,11 +55,6 @@ export function MenuItem(props) {
 			)}
 		</li>
 	)
-}
-
-MenuItem.defaultProps = {
-	children: null,
-	className: '',
 }
 
 MenuItem.propTypes = {

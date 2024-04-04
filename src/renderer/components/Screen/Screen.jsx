@@ -39,16 +39,14 @@ const DEFAULT_VARIANTS = {
  *
  * @component
  */
-export function Screen(props) {
-	const {
-		animate,
-		children,
-		className,
-		exit,
-		initial,
-		variants,
-	} = props
-
+export function Screen({
+	animate = 'animate',
+	children = null,
+	className = '',
+	exit = 'exit',
+	initial = 'initial',
+	variants = DEFAULT_VARIANTS,
+}) {
 	const compiledClassName = useMemo(() => classnames(styles['screen'], className), [className])
 
 	return (
@@ -61,15 +59,6 @@ export function Screen(props) {
 			{children}
 		</motion.main>
 	)
-}
-
-Screen.defaultProps = {
-	animate: 'animate',
-	children: null,
-	className: '',
-	exit: 'exit',
-	initial: 'initial',
-	variants: DEFAULT_VARIANTS,
 }
 
 Screen.propTypes = {

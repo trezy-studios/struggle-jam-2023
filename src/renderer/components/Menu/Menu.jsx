@@ -1,3 +1,5 @@
+/* eslint-disable no-undefined */
+
 // Module imports
 import {
 	Children,
@@ -28,17 +30,15 @@ import { MenuItem } from './MenuItem.jsx'
  *
  * @component
  */
-export function Menu(props) {
-	const {
-		animate,
-		children,
-		className,
-		exit,
-		hideSelectorOnExit,
-		initial,
-		variants,
-	} = props
-
+export function Menu({
+	animate = 'animate',
+	children = null,
+	className = '',
+	exit = 'exit',
+	hideSelectorOnExit = false,
+	initial = 'initial',
+	variants = undefined,
+}) {
 	const [menuID] = useState(uuid())
 
 	const [currentTargetIndex, setCurrentTargetIndex] = useState(hideSelectorOnExit ? null : 0)
@@ -88,16 +88,6 @@ export function Menu(props) {
 			{parsedChildren}
 		</motion.ul>
 	)
-}
-
-Menu.defaultProps = {
-	animate: 'animate',
-	children: null,
-	className: '',
-	exit: 'exit',
-	hideSelectorOnExit: false,
-	initial: 'initial',
-	variants: {},
 }
 
 Menu.propTypes = {

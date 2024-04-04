@@ -12,16 +12,14 @@ import { useCallback } from 'react'
  *
  * @component
  */
-export function ExternalLink(props) {
-	const {
-		children,
-		className,
-		href,
-		onMouseOut,
-		onMouseOver,
-		rel,
-	} = props
-
+export function ExternalLink({
+	children,
+	className = '',
+	href,
+	onMouseOut = null,
+	onMouseOver = null,
+	rel = '',
+}) {
 	const handleMouseOut = useCallback(event => {
 		if (onMouseOut) {
 			onMouseOut(event)
@@ -37,7 +35,6 @@ export function ExternalLink(props) {
 	return (
 		// eslint-disable-next-line react/forbid-elements
 		<a
-			{...props}
 			className={className}
 			href={href}
 			onMouseOut={handleMouseOut}
@@ -47,13 +44,6 @@ export function ExternalLink(props) {
 			{children}
 		</a>
 	)
-}
-
-ExternalLink.defaultProps = {
-	className: '',
-	onMouseOut: null,
-	onMouseOver: null,
-	rel: '',
 }
 
 ExternalLink.propTypes = {

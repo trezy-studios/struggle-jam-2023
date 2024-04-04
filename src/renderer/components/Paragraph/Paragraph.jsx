@@ -19,12 +19,10 @@ import styles from './Paragraph.module.scss'
  *
  * @component
  */
-export function Paragraph(props) {
-	const {
-		children,
-		className,
-	} = props
-
+export function Paragraph({
+	children = null,
+	className = '',
+}) {
 	const compiledClassName = useMemo(() => classNames(styles['paragraph'], className), [className])
 
 	return (
@@ -37,9 +35,4 @@ export function Paragraph(props) {
 Paragraph.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
-}
-
-Paragraph.defaultProps = {
-	children: null,
-	className: '',
 }

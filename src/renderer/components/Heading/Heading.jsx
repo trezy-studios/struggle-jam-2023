@@ -20,17 +20,15 @@ import styles from './Heading.module.scss'
  *
  * @component
  */
-export function Heading(props) {
-	const {
-		animate,
-		children,
-		className,
-		exit,
-		initial,
-		level,
-		variants,
-	} = props
-
+export function Heading({
+	animate = 'animate',
+	children = null,
+	className = '',
+	exit = 'exit',
+	initial = 'initial',
+	level,
+	variants = {},
+}) {
 	const headingProps = useMemo(() => ({
 		animate,
 		className: classnames(
@@ -96,15 +94,6 @@ export function Heading(props) {
 		default:
 			throw new RangeError('Headings must have a level between 1 and 6 (inclusive).')
 	}
-}
-
-Heading.defaultProps = {
-	animate: 'animate',
-	children: null,
-	className: '',
-	exit: 'exit',
-	initial: 'initial',
-	variants: {},
 }
 
 Heading.propTypes = {
