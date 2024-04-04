@@ -104,28 +104,28 @@ jobs:
       steamDemoAppID: ${{ secrets.STEAM_DEMO_APP_ID }}
       token: ${{ secrets.GITHUB_TOKEN }}
 
-  publish-to-itch:
-    name: Publish to Itch
-    uses: ./.github/workflows/publish-to-itch.yml
-    needs:
-      - get-next-version
-      - publish-github-release
-    strategy:
-      matrix:
-        platform:
-          - alias: linux
-            arch: x64
-            name: linux
-          - alias: osx
-            arch: universal
-            name: darwin
-          - alias: windows
-            arch: x64
-            name: win32
-    with:
-      platformAlias: ${{ matrix.platform.alias }}
-      platformArch: ${{ matrix.platform.arch }}
-      platformName: ${{ matrix.platform.name }}
-      version: ${{ needs.get-next-version.outputs.version }}
-      zipPrefix: The-Inn-at-Nightfall
-    secrets: inherit
+  # publish-to-itch:
+  #   name: Publish to Itch
+  #   uses: ./.github/workflows/publish-to-itch.yml
+  #   needs:
+  #     - prepare-release
+  #     - publish-github-release
+  #   strategy:
+  #     matrix:
+  #       platform:
+  #         - alias: linux
+  #           arch: x64
+  #           name: linux
+  #         - alias: osx
+  #           arch: universal
+  #           name: darwin
+  #         - alias: windows
+  #           arch: x64
+  #           name: win32
+  #   with:
+  #     platformAlias: ${{ matrix.platform.alias }}
+  #     platformArch: ${{ matrix.platform.arch }}
+  #     platformName: ${{ matrix.platform.name }}
+  #     version: ${{ needs.prepare-release.outputs.version }}
+  #     zipPrefix: The-Inn-at-Nightfall
+  #   secrets: inherit
