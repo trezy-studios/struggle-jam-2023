@@ -50,11 +50,11 @@ export function Button({
 
 	return (
 		<motion.button
-			animate={animate ?? (variants.animate && 'animate') ?? (variants.visible && 'visible')}
+			animate={animate ?? (variants?.animate && 'animate') ?? (variants?.visible && 'visible')}
 			className={compiledClassName}
 			disabled={isDisabled}
-			exit={exit ?? (variants.exit && 'exit') ?? (variants.hidden && 'hidden')}
-			initial={initial ?? (variants.initial && 'initial') ?? (variants.hidden && 'hidden')}
+			exit={exit ?? (variants?.exit && 'exit') ?? (variants?.hidden && 'hidden')}
+			initial={initial ?? (variants?.initial && 'initial') ?? (variants?.hidden && 'hidden')}
 			onClick={onClick}
 			onMouseDown={onMouseDown}
 			onMouseOut={onMouseOut}
