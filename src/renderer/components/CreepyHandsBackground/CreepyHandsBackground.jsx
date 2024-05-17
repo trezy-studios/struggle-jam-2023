@@ -20,7 +20,7 @@ import { store } from '../../store/store.js'
 
 
 /**
- * Renders the game sky and adjusta its position based on the current time in the round.
+ * Renders the creepy hands in the doorframe that become more visible as time runs out.
  *
  * @component
  */
